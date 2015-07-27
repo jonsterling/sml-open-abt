@@ -1,5 +1,5 @@
 Library
-  structure UniversalOperator
+  functor UniversalOperator
   functor OperatorInjection
 is
   src/operator_operations.sml
