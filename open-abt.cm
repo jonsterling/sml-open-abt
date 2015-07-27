@@ -1,10 +1,12 @@
 Library
   functor UniversalOperator
   functor OperatorInjection
+  functor RestrictAbtView
 is
   src/operator_operations.sml
   src/universal_operator.sml
   src/operator_injection.fun
+  src/restrict_abt_view.fun
   $libs/sml-abt/abt.cm
   $libs/sml-open-ended/open-ended.cm
   $libs/sml-parcom-wrapper/parcom.cm
