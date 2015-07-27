@@ -15,8 +15,9 @@ struct
     val {inject : t -> ambient, project} = Universe.embed ((), operations)
   in
     val `> = inject
+    val `<? = project
     fun `< t =
-      case project t of
+      case `<? t of
            SOME a => a
          | NONE => raise Mismatch
   end
