@@ -1,0 +1,5 @@
+Library
+  structure UniversalOperator
+  functor OperatorInjection
+is
+  open-abt.cm (bind:(anchor:libs value:lib))

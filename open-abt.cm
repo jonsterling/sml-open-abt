@@ -1,0 +1,11 @@
+Library
+  structure UniversalOperator
+  functor OperatorInjection
+is
+  src/operator_operations.sml
+  src/universal_operator.sml
+  src/operator_injection.fun
+  $libs/sml-abt/abt.cm
+  $libs/sml-open-ended/open-ended.cm
+  $libs/sml-parcom-wrapper/parcom.cm
+  $libs/sml-abt-parser/abt-parser.cm
