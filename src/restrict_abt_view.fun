@@ -8,8 +8,6 @@ sig
     | \ of Abt.Variable.t * 'a
     | ` of Abt.Variable.t
 
-  val $$ : Injection.t * Abt.t vector -> Abt.t
-
   val inject : Abt.t view -> Abt.t
   val project : Abt.t -> Abt.t view
 end =
@@ -28,8 +26,6 @@ struct
   fun inject (theta $ es) = Abt.$$ (`> theta, es)
     | inject (x \ E) = Abt.\\ (x, E)
     | inject (` x) = Abt.`` x
-
-  val $$ = inject o op$
 
   fun project M =
     case Abt.out M of
