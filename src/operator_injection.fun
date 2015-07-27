@@ -12,7 +12,7 @@ struct
 
   local
     val operations = {toString = toString, eq = eq, arity = arity, parse = parseOperator}
-    val (inject : t -> ambient, project) = Universe.embed ((), operations)
+    val {inject : t -> ambient, project} = Universe.embed ((), operations)
   in
     val `> = inject
     fun `< t =

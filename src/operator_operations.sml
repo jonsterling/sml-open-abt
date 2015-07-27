@@ -23,7 +23,7 @@ struct
   infix 5 ||
   infix 6 wth
 
-  fun enrich (inject, project) (fallback : 'b t, {toString, eq, arity, parse} : 'a t) =
+  fun enrich {inject, project} (fallback : 'b t, {toString, eq, arity, parse} : 'a t) =
     {toString =
        (fn theta =>
          case project theta of
