@@ -1,18 +1,15 @@
-functor OperatorInjection
-  (structure Operator : PARSE_OPERATOR
-   structure Universe : OPERATOR_UNIVERSE where
-     type world = Operator.world) :>
+functor OperatorInjection (Operator : OPERATOR) :>
   INJECTION
     where type t = Operator.t
-    where type ambient = Universe.t =
+    where type ambient = OperatorUniverse.t =
 struct
-  type ambient = Universe.t
+  type ambient = OperatorUniverse.t
   exception Mismatch
   open Operator
 
   local
-    val operations = {toString = toString, eq = eq, arity = arity, parse = parseOperator}
-    val {inject : t -> ambient, project} = Universe.embed ((), operations)
+    val operations = {toString = toString, eq = eq, arity = arity}
+    val {inject : t -> ambient, project} = OperatorUniverse.embed ((), operations)
   in
     val `> = inject
     val `<? = project

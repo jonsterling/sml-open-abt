@@ -1,29 +1,18 @@
-structure OperatorOperationsType =
+structure OperatorOperations : OPERATIONS =
 struct
-  type ('world, 'a) t =
+  type 'a t =
     {toString : 'a -> string,
      eq : 'a * 'a -> bool,
-     arity : 'a -> Arity.t,
-     parse : 'world -> 'a CharParser.charParser}
-end
-
-functor OperatorOperations (type world) : OPERATIONS =
-struct
-  type 'a t = (world, 'a) OperatorOperationsType.t
+     arity : 'a -> Arity.t}
 
   exception Unregistered
 
   fun default () =
     {toString = fn _ => raise Unregistered,
      eq = fn _ => raise Unregistered,
-     arity = fn _ => raise Unregistered,
-     parse = fn _ => ParserCombinators.fail "unregistered"}
+     arity = fn _ => raise Unregistered}
 
-  open ParserCombinators
-  infix 5 ||
-  infix 6 wth
-
-  fun enrich {inject, project} (fallback : 'b t, {toString, eq, arity, parse} : 'a t) =
+  fun enrich {inject, project} (fallback : 'b t, {toString, eq, arity} : 'a t) =
     {toString =
        (fn theta =>
          case project theta of
@@ -39,8 +28,6 @@ struct
        (fn theta =>
          case project theta of
               SOME a => arity a
-            | NONE => #arity fallback theta),
-     parse =
-       (fn w => #parse fallback w || parse w wth inject)}
+            | NONE => #arity fallback theta)}
 end
 

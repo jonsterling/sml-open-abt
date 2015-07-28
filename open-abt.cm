@@ -1,5 +1,6 @@
 Library
-  functor UniversalOperator
+  structure UniversalOperator
+  structure OperatorUniverse
   functor OperatorInjection
   functor RestrictAbtView
 is
@@ -9,5 +10,3 @@ is
   src/restrict_abt_view.fun
   $libs/sml-abt/abt.cm
   $libs/sml-open-ended/open-ended.cm
-  $libs/sml-parcom-wrapper/parcom.cm
-  $libs/sml-abt-parser/abt-parser.cm

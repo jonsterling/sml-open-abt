@@ -1,5 +1,6 @@
 Library
-  functor UniversalOperator
+  structure UniversalOperator
+   structure OperatorUniverse
   functor OperatorInjection
   functor RestrictAbtView
 is
